@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  border-collapse: collapse;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  padding: 2px;
+  font-size: 40px;
+  text-align: center;
+  background: white;
+}
+
+th, td {
+  text-align: left;
+  font-size: 20px;
+  padding: 8px;
+  padding-left: 60px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #191919;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h2>Employee List</h2>
+</div>
+
+<table>
+  <tr>
+    <th>Employee Name</th>
+    <th>Designation</th>
+    <th>Date of Joining</th>
+  </tr>
+  {% for employee in employees reversed %}
+  <tr>
+            <td>{{employee.employee_name}}</td>
+            <td>{{employee.designation}}</td>
+            <td>{{employee.DOJ}}</td>
+  </tr>
+  {% endfor %}
+
+</table>
+
+</body>
+</html>
+
+
+
+

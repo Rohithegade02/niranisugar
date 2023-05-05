@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@import "compass/css3";
+
+@import url(https://fonts.googleapis.com/css?family=Merriweather);
+$red: #e74c3c;
+
+*,
+*:before,
+*:after {
+   @include box-sizing(border-box);
+}
+
+html, body {
+  background: #f1f1f1;
+  font-family: 'Merriweather', sans-serif;
+  padding: 1em;
+}
+
+h1 {
+   text-align: center;
+   color: #3B3B3B;
+   @include text-shadow(1px 1px 0 rgba(white, 1));
+}
+
+form {
+   max-width: 600px;
+   text-align: center;
+   margin: 20px auto;
+
+  input,{
+     border:0; outline:0;
+     padding: 1em;
+     @include border-radius(8px);
+     display: block;
+     width: 100%;
+     margin-top: 1em;
+     font-family: 'Merriweather', sans-serif;
+     @include box-shadow(0 1px 1px rgba(black, 0.1));
+     resize: none;
+
+    &:focus {
+       @include box-shadow(0 0px 2px rgba($red, 1)!important);
+    }
+  }
+
+  #input-submit {
+     color: white;
+     background: #3B3B3B;
+     cursor: pointer;
+
+    &:hover {
+       @include box-shadow(0 1px 1px 1px rgba(#aaa, 0.6));
+    }
+  }
+}
+
+</style>
+</head>
+<body>
+
+
+
+
+
+<h1>Add Employee</h1>
+<form action="/addemployee" method="post">
+    {% csrf_token %}
+          <label>Employee Name </label>
+          <input type="text" name ="employee_name"><br>
+
+          <label>Designation </label>
+          <input type="text" name ="designation"><br>
+
+          <label>Date of Birth </label>
+          <input type="date" name ="employee_DOB"><br>
+
+          <label>Phone </label>
+          <input type="text" name ="phone"><br>
+
+          <label>Email </label>
+          <input type="email" name ="email"><br>
+
+          <label>Date of joining </label>
+          <input type="date" name ="DOJ"><br>
+
+          <label>Gender</label>
+          <input type="text" name ="gender"><br>
+
+          <label>salary</label>
+          <input type="text" name ="salary"><br>
+
+          <button type="submit">Add</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+.header {
+  padding: 2px;
+  font-size: 40px;
+  text-align: center;
+  background: white;
+}
+
+.leftcolumn {
+  float: left;
+  width: 100%;
+}
+
+.card {
+   background-color: white;
+   padding: 20px;
+   margin-top: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h2>Leave Applications</h2>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+
+      <form action="/addleaveapp" method="post">
+          {% csrf_token %}
+          <label for="lemployee_ID">Name</label>
+          <input type="text" id="lemployee_ID" name ="lemployee_ID" value="{{lemployee_ID}}"><br>
+
+          <label >Select Leave Type</label>
+          <select name = "leavetype">
+              {% for leavetype in leavetypes reversed %}
+                <option value="{{leavetype.id}}">{{leavetype.leave_type_name}}</option>
+              {% endfor %}
+          </select>
+          <br>
+
+
+
+          <label for="date_of_application" >Date of application</label>
+          <input type="date" id="date_of_application"  name ="date_of_application" value="{{date_of_application}}"><br>
+
+          <label for="l_from" >Leave from</label>
+          <input type="date" id="l_from" name ="l_from" value="{{l_from}}"><br>
+
+          <label for="l_to " >Leave To</label>
+          <input type="date" id="l_to " name ="l_to" value="{{l_to}}"><br>
+
+           <label>Number of Days</label>
+          <input type="number" id="no_of_days " name ="no_of_days" value="{{no_of_days }}"><br>
+
+          <label for="reason" >Reason</label>
+          <input type="text" id="reason" name ="reason" value="{{reason}}"><br>
+
+          <button type="submit">Apply</button>
+          {% if msg %}
+          <h1>{{msg}}</h1>
+          {% endif %}
+
+      </form>
+  </div>
+</div>
+
+</body>
+</html>
+
